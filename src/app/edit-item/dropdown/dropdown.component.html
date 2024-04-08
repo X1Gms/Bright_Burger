@@ -1,0 +1,30 @@
+<div class="m-dropdown">
+  <div
+    [className]="
+      isOpen ? 'dropdown noBottom cursor-pointer' : 'dropdown cursor-pointer'
+    "
+    (click)="Opening()"
+  >
+    {{ section || "Section" }}
+    <mat-icon class="sizing" style="--size: 35px">{{
+      isOpen ? "expand_less" : "expand_more"
+    }}</mat-icon>
+  </div>
+  <div
+    class="m-selection"
+    [style]="isOpen ? 'display:block;' : 'display:none;'"
+  >
+    @for (item of sections; track $index) {
+    <div
+      [className]="
+        $index === sections.length - 1
+          ? 'dropdown noTop drop-p'
+          : 'dropdown noTop noBottom drop-p'
+      "
+      (click)="ChangingSection(item)"
+    >
+      {{ item }}
+    </div>
+    }
+  </div>
+</div>

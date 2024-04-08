@@ -1,0 +1,63 @@
+<div class="flex w-full max-sm:px-[15px] px-10 max-lg:flex-col pt-[150px]">
+  <div class="flex-1 flex justify-center">
+    <div class="w-full max-w-[375px] flex flex-col">
+      <img
+        class="load-image mt-[50px]"
+        [src]="
+          imageUrl != null
+            ? imageUrl
+            : '../../assets/images/store/Load_Image.png'
+        "
+      />
+      <div class="self-end pricelbl">{{ number.toFixed(2) }}€</div>
+    </div>
+  </div>
+  <div
+    class="wheres flex-1 flex flex-col items-end max-lg:items-center max-lg:my-10"
+  >
+    <div class="ErrorMsg" [className]="msgError ? 'ErrorMsg' : 'hidden'">
+      {{ msgError }}
+    </div>
+    <form class="form flex flex-col" (submit)="SendRequest()">
+      <input
+        type="text"
+        name="product"
+        id=""
+        class="product"
+        placeholder="Product"
+        [(ngModel)]="text"
+      />
+
+      <dropdown [(section)]="section" />
+
+      <div class="text-[14px] text-[#585858] italic font-bold">Price</div>
+      <div class="flex">
+        <input
+          type="number"
+          class="price"
+          placeholder="Price"
+          name="price"
+          [(ngModel)]="number"
+        />
+        <div class="euro">€</div>
+      </div>
+      <input
+        type="file"
+        name="file"
+        id="file"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+      <label
+        for="file"
+        class="flex items-center label justify-center cursor-pointer"
+      >
+        <mat-icon class="sizing" style="--size: 30px; margin-right: 10px"
+          >backup</mat-icon
+        >
+        Load Image</label
+      >
+      <button type="submit" value="Submit">Add Product</button>
+    </form>
+  </div>
+</div>

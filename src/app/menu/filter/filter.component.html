@@ -1,0 +1,62 @@
+<div
+  class=""
+  [className]="[
+    globals.OpenNavigation ? 'block ' : ' hidden ',
+    ' c-filter fixed h-full bg-white shadow-2xl lg:shadow-none lg:relative lg:h-auto wipe-transition pt-[150px] pr-[40px] sm:pl-10 pl-4 overflow-y-auto lg:block'
+  ]"
+>
+  <input
+    type="text"
+    class="product"
+    placeholder="Product"
+    [(ngModel)]="products"
+    (input)="SetCategory('product', products)"
+  />
+  <div class="category mb-20">
+    <div class="category__label">Category</div>
+    <div class="category__categories">
+      @for (item of sectItems; track $index) {
+      <div
+        class="mb-5 cursor-pointer flex"
+        (click)="SetCategory('category', item.name)"
+      >
+        <mat-icon class="sizing" style="--size: 35px; margin-right: 10px">{{
+          item.label
+        }}</mat-icon>
+        <div class="category__categories__label">{{ item.name }}</div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="category">
+    <div class="category__label">Price</div>
+    <div class="category__categories">
+      <div class="flex mb-5">
+        <div class="flex items-center mr-5">Min.</div>
+        <div class="flex">
+          <input
+            type="number"
+            class="price"
+            placeholder="Price"
+            [(ngModel)]="minPrice"
+            (input)="SetCategory('minPrice', minPrice)"
+          />
+          <div class="euro">€</div>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex items-center mr-5">Máx.</div>
+        <div class="flex">
+          <input
+            type="number"
+            class="price"
+            placeholder="Price"
+            [(ngModel)]="maxPrice"
+            (input)="SetCategory('maxPrice', maxPrice)"
+          />
+          <div class="euro">€</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

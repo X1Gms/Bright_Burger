@@ -1,0 +1,12 @@
+<div class="text-[10px] flex flex-wrap pt-[150px]">
+  @if (filteredItems.length > 0) { @for (item of filteredItems; track $index) {
+
+  <div class="food cursor-pointer" (click)="EditD(item.id, item)">
+    <img [src]="item.imgPath" alt="" />
+    <div class="food__price">{{ item.price.toFixed(2) }}€</div>
+    <div class="food__name">{{ item.product }}</div>
+  </div>
+  } } @else{
+  <div class="text-lg">Nenhum Produto Disponível 😓</div>
+  }
+</div>

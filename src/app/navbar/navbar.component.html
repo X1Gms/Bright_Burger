@@ -1,0 +1,18 @@
+<div class="navbar flex flex-wrap sticky !px-4 sm:!px-10">
+  <div class="navbar__logo">
+    <a routerLink="/">
+      <img
+        class="navbar__logo__img"
+        src="../../assets/images/BrightBurgerLogo.png"
+        alt=""
+      />
+    </a>
+    <p class="navbar__logo__title">Bright Burger</p>
+  </div>
+  <div class="flex">
+    <p class="navbar__item"><a routerLink="/add">Add Item</a></p>
+    <p class="navbar__item cursor-pointer lg:hidden ml-10" (click)="Revert()">
+      Search
+    </p>
+  </div>
+</div>
